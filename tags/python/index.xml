@@ -13,7 +13,8 @@
       <pubDate>Tue, 23 Nov 2021 08:50:34 +0800</pubDate>
       
       <guid>https://geosuper.top/posts/%E9%81%A5%E6%84%9F%E5%BD%B1%E5%83%8F%E9%A2%84%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E9%85%8D%E5%87%86/</guid>
-      <description>﻿﻿## 方法一、ArcGIS Pro
+      <description>[TOC]
+﻿﻿## 方法一、ArcGIS Pro
 利用ArcGIS Pro的自动配准 查看控制点表可以看到自动打了49个点，还是均匀分布于影像的 局部结果如下图所示，然后另存为新的栅格即可。 总结：首先进行自动配准，如果不好的话，可再次进行自动配准，然后打开控制点表格，删除误差比较大的点，边删边看下自动配准的怎么样，基本都能达到满意的结果。
 方法二、Python(arosics包) arosics作者github arosics使用手册 根据使用手册安装arosics及相关依赖库
 纸上得来终觉浅，实践一下：
@@ -21,7 +22,7 @@ import arosics from geoarray import GeoArray 加载官方给的样例数据，�
 im_reference = &amp;#34;G:/learnpy/arosics/master/ref_S2A_20160608T153121_T33UUU_sub.tif&amp;#34; im_target = &amp;#34;G:/learnpy/arosics/master/tgt_S2A_20160529T153631_T33UUU_sub1.tif&amp;#34; geoArr = GeoArray(im_reference) 查看参考影像的相关参数
 ref_ndarray = geoArr[:] ref_gt = geoArr.geotransform ref_prj = geoArr.projection 查看目标影像的相关参数
 tgt_ndarray = geoArr[:] tgt_gt = geoArr.geotransform tgt_prj = geoArr.projection geoArr_reference = GeoArray(ref_ndarray, ref_gt, ref_prj) geoArr_target = GeoArray(tgt_ndarray, tgt_gt, tgt_prj) CR = arosics.CoReg.COREG(geoArr_reference, geoArr_target, wp=(None, None), ws=(256, 256),path_out=&amp;#34;C:/Users/Administrator/Desktop/temp/11.tif&amp;#34;) 计算空间偏移
-CR.calculate_spatial_shifts() CR.correct_shifts() 看一下最后的配准结果： 欢迎关注个人公众号GeoSuper </description>
+CR.calculate_spatial_shifts() CR.</description>
     </item>
     
   </channel>
