@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>如何获取中国最新的县级行政区划矢量数据 | GeoSuper&#39;s Blog</title>
+<meta name="keywords" content="" />
+<meta name="description" content="数据来源：高德开放平台 1. 目标： （1）获取中国最新的县级行政区划矢量数据 （2）学习如何使用R语言将.json数据转为shp文件 2. 步骤： 将json数据处理为shapefile library(pacman) p_load(sf,tmap,maptools,rgdal) china&lt;-st_read(&#34;https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json&#34;) class(china) # [1] &#34;sp&#34; china qtm() qtm(china, fill = &#34;name&#34;)&#43; tm_text(&#34;name&#34;) crs(china) # CRS arguments: &#43;proj=longlat &#43;datum=WGS84 &#43;no_defs  china$name # [1] &#34;北京市&#34; &#34;天津市&#34; &#34;河北省&#34; &#34;山西省&#34; &#34;内蒙古自治区&#34;  # [6] &#34;辽宁省&#34; &#34;吉林省&#34; &#34;黑龙江省&#34; &#34;上海市&#34; &#34;江苏省&#34;  # [11] &#34;浙江省&#34; &#34;安徽省&#34; &#34;福建省&#34; &#34;江西省&#34; &#34;山东省&#34;  # [16] &#34;河南省&#34; &#34;湖北省&#34; &#34;湖南省&#34; &#34;广东省&#34; &#34;广西壮族自治区&#34;  # [21] &#34;海南省&#34; &#34;重庆市&#34; &#34;四川省&#34; &#34;贵州省&#34; &#34;云南省&#34;  # [26] &#34;西藏自治区&#34; &#34;陕西省&#34; &#34;甘肃省&#34; &#34;青海省&#34; &#34;宁夏回族自治区&#34;  # [31] &#34;新疆维吾尔自治区&#34; &#34;台湾省&#34; &#34;香港特别行政区&#34; &#34;澳门特别行政区&#34; &#34;&#34; 导出为shapefile">
+<meta name="author" content="Rambo">
+<link rel="canonical" href="http://GeoSuper.github.io/posts/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E4%B8%AD%E5%9B%BD%E6%9C%80%E6%96%B0%E7%9A%84%E5%8E%BF%E7%BA%A7%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css" integrity="sha256-yIlj/i15RiAA/Q&#43;xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://GeoSuper.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://GeoSuper.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://GeoSuper.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://GeoSuper.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="http://GeoSuper.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.89.4" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="如何获取中国最新的县级行政区划矢量数据" />
+<meta property="og:description" content="数据来源：高德开放平台 1. 目标： （1）获取中国最新的县级行政区划矢量数据 （2）学习如何使用R语言将.json数据转为shp文件 2. 步骤： 将json数据处理为shapefile library(pacman) p_load(sf,tmap,maptools,rgdal) china&lt;-st_read(&#34;https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json&#34;) class(china) # [1] &#34;sp&#34; china qtm() qtm(china, fill = &#34;name&#34;)&#43; tm_text(&#34;name&#34;) crs(china) # CRS arguments: &#43;proj=longlat &#43;datum=WGS84 &#43;no_defs  china$name # [1] &#34;北京市&#34; &#34;天津市&#34; &#34;河北省&#34; &#34;山西省&#34; &#34;内蒙古自治区&#34;  # [6] &#34;辽宁省&#34; &#34;吉林省&#34; &#34;黑龙江省&#34; &#34;上海市&#34; &#34;江苏省&#34;  # [11] &#34;浙江省&#34; &#34;安徽省&#34; &#34;福建省&#34; &#34;江西省&#34; &#34;山东省&#34;  # [16] &#34;河南省&#34; &#34;湖北省&#34; &#34;湖南省&#34; &#34;广东省&#34; &#34;广西壮族自治区&#34;  # [21] &#34;海南省&#34; &#34;重庆市&#34; &#34;四川省&#34; &#34;贵州省&#34; &#34;云南省&#34;  # [26] &#34;西藏自治区&#34; &#34;陕西省&#34; &#34;甘肃省&#34; &#34;青海省&#34; &#34;宁夏回族自治区&#34;  # [31] &#34;新疆维吾尔自治区&#34; &#34;台湾省&#34; &#34;香港特别行政区&#34; &#34;澳门特别行政区&#34; &#34;&#34; 导出为shapefile" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://GeoSuper.github.io/posts/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E4%B8%AD%E5%9B%BD%E6%9C%80%E6%96%B0%E7%9A%84%E5%8E%BF%E7%BA%A7%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-14T08:50:34&#43;08:00" />
+<meta property="article:modified_time" content="2021-05-14T08:50:34&#43;08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何获取中国最新的县级行政区划矢量数据"/>
+<meta name="twitter:description" content="数据来源：高德开放平台 1. 目标： （1）获取中国最新的县级行政区划矢量数据 （2）学习如何使用R语言将.json数据转为shp文件 2. 步骤： 将json数据处理为shapefile library(pacman) p_load(sf,tmap,maptools,rgdal) china&lt;-st_read(&#34;https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json&#34;) class(china) # [1] &#34;sp&#34; china qtm() qtm(china, fill = &#34;name&#34;)&#43; tm_text(&#34;name&#34;) crs(china) # CRS arguments: &#43;proj=longlat &#43;datum=WGS84 &#43;no_defs  china$name # [1] &#34;北京市&#34; &#34;天津市&#34; &#34;河北省&#34; &#34;山西省&#34; &#34;内蒙古自治区&#34;  # [6] &#34;辽宁省&#34; &#34;吉林省&#34; &#34;黑龙江省&#34; &#34;上海市&#34; &#34;江苏省&#34;  # [11] &#34;浙江省&#34; &#34;安徽省&#34; &#34;福建省&#34; &#34;江西省&#34; &#34;山东省&#34;  # [16] &#34;河南省&#34; &#34;湖北省&#34; &#34;湖南省&#34; &#34;广东省&#34; &#34;广西壮族自治区&#34;  # [21] &#34;海南省&#34; &#34;重庆市&#34; &#34;四川省&#34; &#34;贵州省&#34; &#34;云南省&#34;  # [26] &#34;西藏自治区&#34; &#34;陕西省&#34; &#34;甘肃省&#34; &#34;青海省&#34; &#34;宁夏回族自治区&#34;  # [31] &#34;新疆维吾尔自治区&#34; &#34;台湾省&#34; &#34;香港特别行政区&#34; &#34;澳门特别行政区&#34; &#34;&#34; 导出为shapefile"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://GeoSuper.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "如何获取中国最新的县级行政区划矢量数据",
+      "item": "http://GeoSuper.github.io/posts/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E4%B8%AD%E5%9B%BD%E6%9C%80%E6%96%B0%E7%9A%84%E5%8E%BF%E7%BA%A7%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "如何获取中国最新的县级行政区划矢量数据",
+  "name": "如何获取中国最新的县级行政区划矢量数据",
+  "description": "数据来源：高德开放平台 1. 目标： （1）获取中国最新的县级行政区划矢量数据 （2）学习如何使用R语言将.json数据转为shp文件 2. 步骤： 将json数据处理为shapefile library(pacman) p_load(sf,tmap,maptools,rgdal) china\u0026lt;-st_read(\u0026#34;https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json\u0026#34;) class(china) # [1] \u0026#34;sp\u0026#34; china qtm() qtm(china, fill = \u0026#34;name\u0026#34;)+ tm_text(\u0026#34;name\u0026#34;) crs(china) # CRS arguments: +proj=longlat +datum=WGS84 +no_defs  china$name # [1] \u0026#34;北京市\u0026#34; \u0026#34;天津市\u0026#34; \u0026#34;河北省\u0026#34; \u0026#34;山西省\u0026#34; \u0026#34;内蒙古自治区\u0026#34;  # [6] \u0026#34;辽宁省\u0026#34; \u0026#34;吉林省\u0026#34; \u0026#34;黑龙江省\u0026#34; \u0026#34;上海市\u0026#34; \u0026#34;江苏省\u0026#34;  # [11] \u0026#34;浙江省\u0026#34; \u0026#34;安徽省\u0026#34; \u0026#34;福建省\u0026#34; \u0026#34;江西省\u0026#34; \u0026#34;山东省\u0026#34;  # [16] \u0026#34;河南省\u0026#34; \u0026#34;湖北省\u0026#34; \u0026#34;湖南省\u0026#34; \u0026#34;广东省\u0026#34; \u0026#34;广西壮族自治区\u0026#34;  # [21] \u0026#34;海南省\u0026#34; \u0026#34;重庆市\u0026#34; \u0026#34;四川省\u0026#34; \u0026#34;贵州省\u0026#34; \u0026#34;云南省\u0026#34;  # [26] \u0026#34;西藏自治区\u0026#34; \u0026#34;陕西省\u0026#34; \u0026#34;甘肃省\u0026#34; \u0026#34;青海省\u0026#34; \u0026#34;宁夏回族自治区\u0026#34;  # [31] \u0026#34;新疆维吾尔自治区\u0026#34; \u0026#34;台湾省\u0026#34; \u0026#34;香港特别行政区\u0026#34; \u0026#34;澳门特别行政区\u0026#34; \u0026#34;\u0026#34; 导出为shapefile",
+  "keywords": [
+    
+  ],
+  "articleBody": "数据来源：高德开放平台 1. 目标： （1）获取中国最新的县级行政区划矢量数据 （2）学习如何使用R语言将.json数据转为shp文件 2. 步骤： 将json数据处理为shapefile library(pacman) p_load(sf,tmap,maptools,rgdal) chinast_read(\"https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json\") class(china) # [1] \"sp\" china qtm() qtm(china, fill = \"name\")+ tm_text(\"name\") crs(china) # CRS arguments: +proj=longlat +datum=WGS84 +no_defs  china$name # [1] \"北京市\" \"天津市\" \"河北省\" \"山西省\" \"内蒙古自治区\"  # [6] \"辽宁省\" \"吉林省\" \"黑龙江省\" \"上海市\" \"江苏省\"  # [11] \"浙江省\" \"安徽省\" \"福建省\" \"江西省\" \"山东省\"  # [16] \"河南省\" \"湖北省\" \"湖南省\" \"广东省\" \"广西壮族自治区\"  # [21] \"海南省\" \"重庆市\" \"四川省\" \"贵州省\" \"云南省\"  # [26] \"西藏自治区\" \"陕西省\" \"甘肃省\" \"青海省\" \"宁夏回族自治区\"  # [31] \"新疆维吾尔自治区\" \"台湾省\" \"香港特别行政区\" \"澳门特别行政区\" \"\" 导出为shapefile\nst_write(china, \"G:/Rdata/China/GeoAltas/China.shp\", layer_options = \"ENCODING=UTF-8\",delete_layer = TRUE) **province  paste0(\"https://geo.datav.aliyun.com/areas_v2/bound/\",china$adcode,\"_full.json\") province1  province[1:34] province1 count=0 for (i in province1){ x  st_read(i) count  count + 1 st_write(x,dsn = \"G:/Rdata/China/GeoAltas/1\",layer = china$name[count], layer_options = \"ENCODING=UTF-8\",delete_layer = TRUE, driver = \"ESRI Shapefile\") } county  list.files(\"G:/Rdata/China/GeoAltas/1/省市\", full.names = TRUE, pattern = \".shp$\") library(plyr) data  NULL for(aFile in county){ data  rbind.fill(data, st_read(aFile)) } data  st_as_sf(data) class(data) # [1] \"sf\" \"data.frame\" qtm(data,fill = \"name\") data #https://stackoverflow.com/questions/64569432/st-union-sf-polygons-with-data-table data=data[1:nrow(data),] st_write(data,\"G:/Rdata/China/GeoAltas/city.shp\", layer_options = \"ENCODING=UTF-8\",delete_layer = TRUE) library(\"dplyr\") data  data%% dplyr::filter(chldrnN 0 ) qtm(data) city_county  paste0(\"https://geo.datav.aliyun.com/areas_v2/bound/\",data$adcode,\"_full.json\") head(city_county) # [1] \"https://geo.datav.aliyun.com/areas_v2/bound/340100_full.json\" # [2] \"https://geo.datav.aliyun.com/areas_v2/bound/340200_full.json\" # [3] \"https://geo.datav.aliyun.com/areas_v2/bound/340300_full.json\" # [4] \"https://geo.datav.aliyun.com/areas_v2/bound/340400_full.json\" # [5] \"https://geo.datav.aliyun.com/areas_v2/bound/340500_full.json\" # [6] \"https://geo.datav.aliyun.com/areas_v2/bound/340600_full.json\" count1 = 0 for(i in city_county){ x  st_read(i) count1  count1 + 1 st_write(x,dsn = \"G:/Rdata/China/GeoAltas/1/市县\",layer = data$name[count1], layer_options = \"ENCODING=UTF-8\", delete_layer = TRUE,driver = \"ESRI Shapefile\") }** 3. 结果 数据分享 https://pan.baidu.com/s/1yhLJodusCwx9GTK858Uxuw 提取码：1111\n欢迎关注个人公众号GeoSuper ",
+  "wordCount" : "228",
+  "inLanguage": "en",
+  "datePublished": "2021-05-14T08:50:34+08:00",
+  "dateModified": "2021-05-14T08:50:34+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Rambo"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://GeoSuper.github.io/posts/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E4%B8%AD%E5%9B%BD%E6%9C%80%E6%96%B0%E7%9A%84%E5%8E%BF%E7%BA%A7%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "GeoSuper's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://GeoSuper.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://GeoSuper.github.io/" accesskey="h" title="GeoSuper&#39;s Blog (Alt + H)">GeoSuper&#39;s Blog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      如何获取中国最新的县级行政区划矢量数据
+    </h1>
+    <div class="post-meta"><span title='2021-05-14 08:50:34 +0800 CST'>May 14, 2021</span>&nbsp;·&nbsp;Rambo
+
+</div>
+  </header> 
+  <div class="post-content"><p>数据来源：高德开放平台
+<img loading="lazy" src="https://img-blog.csdnimg.cn/64cbeba20ade498997440ec70d18875c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAR2VvU3VwZXI=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"  />
+</p>
+<h1 id="1-目标">1. 目标：<a hidden class="anchor" aria-hidden="true" href="#1-目标">#</a></h1>
+<h2 id="1获取中国最新的县级行政区划矢量数据">（1）获取中国最新的县级行政区划矢量数据<a hidden class="anchor" aria-hidden="true" href="#1获取中国最新的县级行政区划矢量数据">#</a></h2>
+<h2 id="2学习如何使用r语言将json数据转为shp文件">（2）学习如何使用R语言将.json数据转为shp文件<a hidden class="anchor" aria-hidden="true" href="#2学习如何使用r语言将json数据转为shp文件">#</a></h2>
+<h1 id="2-步骤">2. 步骤：<a hidden class="anchor" aria-hidden="true" href="#2-步骤">#</a></h1>
+<h2 id="将json数据处理为shapefile">将json数据处理为shapefile<a hidden class="anchor" aria-hidden="true" href="#将json数据处理为shapefile">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(pacman)
+<span style="color:#a6e22e">p_load</span>(sf,tmap,maptools,rgdal)
+china<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">st_read</span>(<span style="color:#e6db74">&#34;https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json&#34;</span>)
+<span style="color:#a6e22e">class</span>(china)
+<span style="color:#75715e"># [1] &#34;sp&#34;</span>
+china
+
+<span style="color:#a6e22e">qtm</span>()
+
+<span style="color:#a6e22e">qtm</span>(china, fill <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;name&#34;</span>)<span style="color:#f92672">+</span>
+  <span style="color:#a6e22e">tm_text</span>(<span style="color:#e6db74">&#34;name&#34;</span>)
+
+
+<span style="color:#a6e22e">crs</span>(china)
+<span style="color:#75715e"># CRS arguments: +proj=longlat +datum=WGS84 +no_defs </span>
+china<span style="color:#f92672">$</span>name
+<span style="color:#75715e"># [1] &#34;北京市&#34;           &#34;天津市&#34;           &#34;河北省&#34;           &#34;山西省&#34;           &#34;内蒙古自治区&#34;    </span>
+<span style="color:#75715e"># [6] &#34;辽宁省&#34;           &#34;吉林省&#34;           &#34;黑龙江省&#34;         &#34;上海市&#34;           &#34;江苏省&#34;          </span>
+<span style="color:#75715e"># [11] &#34;浙江省&#34;           &#34;安徽省&#34;           &#34;福建省&#34;           &#34;江西省&#34;           &#34;山东省&#34;          </span>
+<span style="color:#75715e"># [16] &#34;河南省&#34;           &#34;湖北省&#34;           &#34;湖南省&#34;           &#34;广东省&#34;           &#34;广西壮族自治区&#34;  </span>
+<span style="color:#75715e"># [21] &#34;海南省&#34;           &#34;重庆市&#34;           &#34;四川省&#34;           &#34;贵州省&#34;           &#34;云南省&#34;          </span>
+<span style="color:#75715e"># [26] &#34;西藏自治区&#34;       &#34;陕西省&#34;           &#34;甘肃省&#34;           &#34;青海省&#34;           &#34;宁夏回族自治区&#34;  </span>
+<span style="color:#75715e"># [31] &#34;新疆维吾尔自治区&#34; &#34;台湾省&#34;           &#34;香港特别行政区&#34;   &#34;澳门特别行政区&#34;   &#34;&#34;</span>
+</code></pre></div><p><img loading="lazy" src="https://img-blog.csdnimg.cn/20210420231122573.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNzE4MzU3,size_16,color_FFFFFF,t_0" alt="在这里插入图片描述"  />
+
+导出为shapefile</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">st_write</span>(china, <span style="color:#e6db74">&#34;G:/Rdata/China/GeoAltas/China.shp&#34;</span>, layer_options <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ENCODING=UTF-8&#34;</span>,delete_layer <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
+<span style="color:#f92672">**</span>province <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">paste0</span>(<span style="color:#e6db74">&#34;https://geo.datav.aliyun.com/areas_v2/bound/&#34;</span>,china<span style="color:#f92672">$</span>adcode,<span style="color:#e6db74">&#34;_full.json&#34;</span>)
+province1 <span style="color:#f92672">&lt;-</span> province[1<span style="color:#f92672">:</span><span style="color:#ae81ff">34</span>]
+province1 
+
+count<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+<span style="color:#a6e22e">for </span>(i in province1){
+  x <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">st_read</span>(i)
+  count <span style="color:#f92672">&lt;-</span> count <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+  <span style="color:#a6e22e">st_write</span>(x,dsn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;G:/Rdata/China/GeoAltas/1&#34;</span>,layer <span style="color:#f92672">=</span> china<span style="color:#f92672">$</span>name[count],
+            layer_options <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ENCODING=UTF-8&#34;</span>,delete_layer <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>, driver <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ESRI Shapefile&#34;</span>)
+}
+
+
+county <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list.files</span>(<span style="color:#e6db74">&#34;G:/Rdata/China/GeoAltas/1/省市&#34;</span>,
+                     full.names <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>,
+                     pattern <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;.shp$&#34;</span>)
+
+<span style="color:#a6e22e">library</span>(plyr)
+data <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">NULL</span>
+<span style="color:#a6e22e">for</span>(aFile in county){
+  data <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rbind.fill</span>(data, <span style="color:#a6e22e">st_read</span>(aFile))
+}
+data <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">st_as_sf</span>(data)
+<span style="color:#a6e22e">class</span>(data)
+<span style="color:#75715e"># [1] &#34;sf&#34;         &#34;data.frame&#34;</span>
+<span style="color:#a6e22e">qtm</span>(data,fill <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;name&#34;</span>)
+data
+
+<span style="color:#75715e">#https://stackoverflow.com/questions/64569432/st-union-sf-polygons-with-data-table</span>
+data<span style="color:#f92672">=</span>data[1<span style="color:#f92672">:</span><span style="color:#a6e22e">nrow</span>(data),] 
+<span style="color:#a6e22e">st_write</span>(data,<span style="color:#e6db74">&#34;G:/Rdata/China/GeoAltas/city.shp&#34;</span>,
+         layer_options <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ENCODING=UTF-8&#34;</span>,delete_layer <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
+
+<span style="color:#a6e22e">library</span>(<span style="color:#e6db74">&#34;dplyr&#34;</span>)
+data <span style="color:#f92672">&lt;-</span> data<span style="color:#f92672">%&gt;%</span>
+  dplyr<span style="color:#f92672">::</span><span style="color:#a6e22e">filter</span>(chldrnN <span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span> )
+<span style="color:#a6e22e">qtm</span>(data)
+
+city_county <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">paste0</span>(<span style="color:#e6db74">&#34;https://geo.datav.aliyun.com/areas_v2/bound/&#34;</span>,data<span style="color:#f92672">$</span>adcode,<span style="color:#e6db74">&#34;_full.json&#34;</span>)
+<span style="color:#a6e22e">head</span>(city_county)
+<span style="color:#75715e"># [1] &#34;https://geo.datav.aliyun.com/areas_v2/bound/340100_full.json&#34;</span>
+<span style="color:#75715e"># [2] &#34;https://geo.datav.aliyun.com/areas_v2/bound/340200_full.json&#34;</span>
+<span style="color:#75715e"># [3] &#34;https://geo.datav.aliyun.com/areas_v2/bound/340300_full.json&#34;</span>
+<span style="color:#75715e"># [4] &#34;https://geo.datav.aliyun.com/areas_v2/bound/340400_full.json&#34;</span>
+<span style="color:#75715e"># [5] &#34;https://geo.datav.aliyun.com/areas_v2/bound/340500_full.json&#34;</span>
+<span style="color:#75715e"># [6] &#34;https://geo.datav.aliyun.com/areas_v2/bound/340600_full.json&#34;</span>
+
+count1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#a6e22e">for</span>(i in city_county){
+  x <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">st_read</span>(i)
+  count1 <span style="color:#f92672">&lt;-</span> count1 <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+  <span style="color:#a6e22e">st_write</span>(x,dsn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;G:/Rdata/China/GeoAltas/1/市县&#34;</span>,layer <span style="color:#f92672">=</span> data<span style="color:#f92672">$</span>name[count1],
+           layer_options <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ENCODING=UTF-8&#34;</span>, delete_layer <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>,driver <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ESRI Shapefile&#34;</span>)
+}<span style="color:#f92672">**</span>
+</code></pre></div><h1 id="3-结果">3. 结果<a hidden class="anchor" aria-hidden="true" href="#3-结果">#</a></h1>
+<h2 id="数据分享">数据分享<a hidden class="anchor" aria-hidden="true" href="#数据分享">#</a></h2>
+<p><a href="https://pan.baidu.com/s/1yhLJodusCwx9GTK858Uxuw">https://pan.baidu.com/s/1yhLJodusCwx9GTK858Uxuw</a>
+提取码：1111</p>
+<p>欢迎关注个人公众号GeoSuper
+<img loading="lazy" src="https://img-blog.csdnimg.cn/9cfa9b23c6fb4cb9a6a51acaf9772282.gif#pic_left" alt="在这里插入图片描述"  />
+</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2021 <a href="http://GeoSuper.github.io/">GeoSuper&#39;s Blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
