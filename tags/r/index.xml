@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>R on GeoSuper&#39;s Blog</title>
+    <title>R on 浮游</title>
     <link>https://geosuper.top/tags/r/</link>
-    <description>Recent content in R on GeoSuper&#39;s Blog</description>
+    <description>Recent content in R on 浮游</description>
+    <image>
+      <url>https://geosuper.top/images/home.jpg</url>
+      <link>https://geosuper.top/images/home.jpg</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
     <lastBuildDate>Fri, 14 May 2021 08:50:34 +0800</lastBuildDate><atom:link href="https://geosuper.top/tags/r/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何获取中国最新的县级行政区划矢量数据</title>
