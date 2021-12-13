@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>分类 | 浮游</title>
+<title>Python | 浮游</title>
 <meta name="keywords" content="" />
 <meta name="description" content="寄蜉蝣于天地">
 <meta name="author" content="浮游">
-<link rel="canonical" href="https://geosuper.top/categories/" />
+<link rel="canonical" href="https://geosuper.top/categories/python/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css" integrity="sha256-yIlj/i15RiAA/Q&#43;xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://geosuper.top/images/favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://geosuper.top/images/favicon.png">
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.89.4" />
-<link rel="alternate" type="application/rss+xml" href="https://geosuper.top/categories/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://geosuper.top/categories/python/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -56,15 +56,15 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="分类" />
+</noscript><meta property="og:title" content="Python" />
 <meta property="og:description" content="寄蜉蝣于天地" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://geosuper.top/categories/" /><meta property="og:image" content="https://geosuper.top/images/home.jpg"/>
+<meta property="og:url" content="https://geosuper.top/categories/python/" /><meta property="og:image" content="https://geosuper.top/images/home.jpg"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://geosuper.top/images/home.jpg"/>
 
-<meta name="twitter:title" content="分类"/>
+<meta name="twitter:title" content="Python"/>
 <meta name="twitter:description" content="寄蜉蝣于天地"/>
 
 </head>
@@ -116,7 +116,7 @@
             </li>
             <li>
                 <a href="https://geosuper.top/categories/" title="分类">
-                    <span class="active">分类</span>
+                    <span>分类</span>
                 </a>
             </li>
             <li>
@@ -132,19 +132,30 @@
         </ul>
     </nav>
 </header>
-<main class="main">
-<header class="page-header">
-    <h1>分类</h1>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://geosuper.top">主页</a>&nbsp;»&nbsp;<a href="https://geosuper.top/categories/">分类</a></div>
+  <h1>Python</h1>
 </header>
 
-<ul class="terms-tags">
-    <li>
-        <a href="https://geosuper.top/categories/python/">Python <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://geosuper.top/categories/r/">R <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-</ul>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>遥感影像预处理之自动配准
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>﻿﻿## 方法一、ArcGIS Pro
+利用ArcGIS Pro的自动配准 查看控制点表可以看到自动打了49个点，还是均匀分布于影像的 局部结果如下图所示，然后另存为新的栅格即可。 总结：首先进行自动配准，如果不好的话，可再次进行自动配准，然后打开控制点表格，删除误差比较大的点，边删边看下自动配准的怎么样，基本都能达到满意的结果。
+方法二、Python(arosics包) arosics作者github arosics使用手册 根据使用手册安装arosics及相关依赖库
+纸上得来终觉浅，实践一下：
+import arosics from geoarray import GeoArray 加载官方给的样例数据，发现偏移的不是很大，所以自己又手动给目标影像偏移增大了下，命名为*sub1.tif。
+im_reference = &#34;G:/learnpy/arosics/master/ref_S2A_20160608T153121_T33UUU_sub.tif&#34; im_target = &#34;G:/learnpy/arosics/master/tgt_S2A_20160529T153631_T33UUU_sub1.tif&#34; geoArr = GeoArray(im_reference) 查看参考影像的相关参数
+ref_ndarray = geoArr[:] ref_gt = geoArr.geotransform ref_prj = geoArr.projection 查看目标影像的相关参数
+tgt_ndarray = geoArr[:] tgt_gt = geoArr.geotransform tgt_prj = geoArr.projection geoArr_reference = GeoArray(ref_ndarray, ref_gt, ref_prj) geoArr_target = GeoArray(tgt_ndarray, tgt_gt, tgt_prj) CR = arosics.CoReg.COREG(geoArr_reference, geoArr_target, wp=(None, None), ws=(256, 256),path_out=&#34;C:/Users/Administrator/Desktop/temp/11.tif&#34;) 计算空间偏移
+CR.calculate_spatial_shifts() CR.correct_shifts() 看一下最后的配准结果： 欢迎关注个人公众号GeoSuper </p>
+  </section>
+  <footer class="entry-footer"><span title='2021-11-23 08:50:34 +0800 CST'>2021-11-23</span>&nbsp;·&nbsp;浮游</footer>
+  <a class="entry-link" aria-label="post link to 遥感影像预处理之自动配准" href="https://geosuper.top/posts/%E9%81%A5%E6%84%9F%E5%BD%B1%E5%83%8F%E9%A2%84%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E9%85%8D%E5%87%86/"></a>
+</article>
     </main>
     
 

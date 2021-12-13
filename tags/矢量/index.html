@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>分类 | 浮游</title>
+<title>矢量 | 浮游</title>
 <meta name="keywords" content="" />
 <meta name="description" content="寄蜉蝣于天地">
 <meta name="author" content="浮游">
-<link rel="canonical" href="https://geosuper.top/categories/" />
+<link rel="canonical" href="https://geosuper.top/tags/%E7%9F%A2%E9%87%8F/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css" integrity="sha256-yIlj/i15RiAA/Q&#43;xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://geosuper.top/images/favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://geosuper.top/images/favicon.png">
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.89.4" />
-<link rel="alternate" type="application/rss+xml" href="https://geosuper.top/categories/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://geosuper.top/tags/%E7%9F%A2%E9%87%8F/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -56,15 +56,15 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="分类" />
+</noscript><meta property="og:title" content="矢量" />
 <meta property="og:description" content="寄蜉蝣于天地" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://geosuper.top/categories/" /><meta property="og:image" content="https://geosuper.top/images/home.jpg"/>
+<meta property="og:url" content="https://geosuper.top/tags/%E7%9F%A2%E9%87%8F/" /><meta property="og:image" content="https://geosuper.top/images/home.jpg"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://geosuper.top/images/home.jpg"/>
 
-<meta name="twitter:title" content="分类"/>
+<meta name="twitter:title" content="矢量"/>
 <meta name="twitter:description" content="寄蜉蝣于天地"/>
 
 </head>
@@ -116,7 +116,7 @@
             </li>
             <li>
                 <a href="https://geosuper.top/categories/" title="分类">
-                    <span class="active">分类</span>
+                    <span>分类</span>
                 </a>
             </li>
             <li>
@@ -132,19 +132,22 @@
         </ul>
     </nav>
 </header>
-<main class="main">
-<header class="page-header">
-    <h1>分类</h1>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://geosuper.top">主页</a>&nbsp;»&nbsp;<a href="https://geosuper.top/tags/">标签</a></div>
+  <h1>矢量</h1>
 </header>
 
-<ul class="terms-tags">
-    <li>
-        <a href="https://geosuper.top/categories/python/">Python <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://geosuper.top/categories/r/">R <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-</ul>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>如何获取中国最新的县级行政区划矢量数据
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>数据来源：高德开放平台 1. 目标： （1）获取中国最新的县级行政区划矢量数据 （2）学习如何使用R语言将.json数据转为shp文件 2. 步骤： 将json数据处理为shapefile library(pacman) p_load(sf,tmap,maptools,rgdal) china&lt;-st_read(&#34;https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json&#34;) class(china) # [1] &#34;sp&#34; china qtm() qtm(china, fill = &#34;name&#34;)&#43; tm_text(&#34;name&#34;) crs(china) # CRS arguments: &#43;proj=longlat &#43;datum=WGS84 &#43;no_defs  china$name # [1] &#34;北京市&#34; &#34;天津市&#34; &#34;河北省&#34; &#34;山西省&#34; &#34;内蒙古自治区&#34;  # [6] &#34;辽宁省&#34; &#34;吉林省&#34; &#34;黑龙江省&#34; &#34;上海市&#34; &#34;江苏省&#34;  # [11] &#34;浙江省&#34; &#34;安徽省&#34; &#34;福建省&#34; &#34;江西省&#34; &#34;山东省&#34;  # [16] &#34;河南省&#34; &#34;湖北省&#34; &#34;湖南省&#34; &#34;广东省&#34; &#34;广西壮族自治区&#34;  # [21] &#34;海南省&#34; &#34;重庆市&#34; &#34;四川省&#34; &#34;贵州省&#34; &#34;云南省&#34;  # [26] &#34;西藏自治区&#34; &#34;陕西省&#34; &#34;甘肃省&#34; &#34;青海省&#34; &#34;宁夏回族自治区&#34;  # [31] &#34;新疆维吾尔自治区&#34; &#34;台湾省&#34; &#34;香港特别行政区&#34; &#34;澳门特别行政区&#34; &#34;&#34; 导出为shapefile...</p>
+  </section>
+  <footer class="entry-footer"><span title='2021-05-14 08:50:34 +0800 CST'>2021-05-14</span>&nbsp;·&nbsp;浮游</footer>
+  <a class="entry-link" aria-label="post link to 如何获取中国最新的县级行政区划矢量数据" href="https://geosuper.top/posts/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E4%B8%AD%E5%9B%BD%E6%9C%80%E6%96%B0%E7%9A%84%E5%8E%BF%E7%BA%A7%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE/"></a>
+</article>
     </main>
     
 

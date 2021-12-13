@@ -158,8 +158,7 @@
     </h2>
   </header>
   <section class="entry-content">
-    <p>[TOC]
-﻿﻿## 方法一、ArcGIS Pro
+    <p>﻿﻿## 方法一、ArcGIS Pro
 利用ArcGIS Pro的自动配准 查看控制点表可以看到自动打了49个点，还是均匀分布于影像的 局部结果如下图所示，然后另存为新的栅格即可。 总结：首先进行自动配准，如果不好的话，可再次进行自动配准，然后打开控制点表格，删除误差比较大的点，边删边看下自动配准的怎么样，基本都能达到满意的结果。
 方法二、Python(arosics包) arosics作者github arosics使用手册 根据使用手册安装arosics及相关依赖库
 纸上得来终觉浅，实践一下：
@@ -167,9 +166,9 @@ import arosics from geoarray import GeoArray 加载官方给的样例数据，�
 im_reference = &#34;G:/learnpy/arosics/master/ref_S2A_20160608T153121_T33UUU_sub.tif&#34; im_target = &#34;G:/learnpy/arosics/master/tgt_S2A_20160529T153631_T33UUU_sub1.tif&#34; geoArr = GeoArray(im_reference) 查看参考影像的相关参数
 ref_ndarray = geoArr[:] ref_gt = geoArr.geotransform ref_prj = geoArr.projection 查看目标影像的相关参数
 tgt_ndarray = geoArr[:] tgt_gt = geoArr.geotransform tgt_prj = geoArr.projection geoArr_reference = GeoArray(ref_ndarray, ref_gt, ref_prj) geoArr_target = GeoArray(tgt_ndarray, tgt_gt, tgt_prj) CR = arosics.CoReg.COREG(geoArr_reference, geoArr_target, wp=(None, None), ws=(256, 256),path_out=&#34;C:/Users/Administrator/Desktop/temp/11.tif&#34;) 计算空间偏移
-CR.calculate_spatial_shifts() CR....</p>
+CR.calculate_spatial_shifts() CR.correct_shifts() 看一下最后的配准结果： 欢迎关注个人公众号GeoSuper </p>
   </section>
-  <footer class="entry-footer"><span title='2021-11-23 08:50:34 +0800 CST'>2021-11-23</span>&nbsp;·&nbsp;Rambo</footer>
+  <footer class="entry-footer"><span title='2021-11-23 08:50:34 +0800 CST'>2021-11-23</span>&nbsp;·&nbsp;浮游</footer>
   <a class="entry-link" aria-label="post link to 遥感影像预处理之自动配准" href="https://geosuper.top/posts/%E9%81%A5%E6%84%9F%E5%BD%B1%E5%83%8F%E9%A2%84%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E9%85%8D%E5%87%86/"></a>
 </article>
 
@@ -181,7 +180,7 @@ CR.calculate_spatial_shifts() CR....</p>
   <section class="entry-content">
     <p>数据来源：高德开放平台 1. 目标： （1）获取中国最新的县级行政区划矢量数据 （2）学习如何使用R语言将.json数据转为shp文件 2. 步骤： 将json数据处理为shapefile library(pacman) p_load(sf,tmap,maptools,rgdal) china&lt;-st_read(&#34;https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json&#34;) class(china) # [1] &#34;sp&#34; china qtm() qtm(china, fill = &#34;name&#34;)&#43; tm_text(&#34;name&#34;) crs(china) # CRS arguments: &#43;proj=longlat &#43;datum=WGS84 &#43;no_defs  china$name # [1] &#34;北京市&#34; &#34;天津市&#34; &#34;河北省&#34; &#34;山西省&#34; &#34;内蒙古自治区&#34;  # [6] &#34;辽宁省&#34; &#34;吉林省&#34; &#34;黑龙江省&#34; &#34;上海市&#34; &#34;江苏省&#34;  # [11] &#34;浙江省&#34; &#34;安徽省&#34; &#34;福建省&#34; &#34;江西省&#34; &#34;山东省&#34;  # [16] &#34;河南省&#34; &#34;湖北省&#34; &#34;湖南省&#34; &#34;广东省&#34; &#34;广西壮族自治区&#34;  # [21] &#34;海南省&#34; &#34;重庆市&#34; &#34;四川省&#34; &#34;贵州省&#34; &#34;云南省&#34;  # [26] &#34;西藏自治区&#34; &#34;陕西省&#34; &#34;甘肃省&#34; &#34;青海省&#34; &#34;宁夏回族自治区&#34;  # [31] &#34;新疆维吾尔自治区&#34; &#34;台湾省&#34; &#34;香港特别行政区&#34; &#34;澳门特别行政区&#34; &#34;&#34; 导出为shapefile...</p>
   </section>
-  <footer class="entry-footer"><span title='2021-05-14 08:50:34 +0800 CST'>2021-05-14</span>&nbsp;·&nbsp;Rambo</footer>
+  <footer class="entry-footer"><span title='2021-05-14 08:50:34 +0800 CST'>2021-05-14</span>&nbsp;·&nbsp;浮游</footer>
   <a class="entry-link" aria-label="post link to 如何获取中国最新的县级行政区划矢量数据" href="https://geosuper.top/posts/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E4%B8%AD%E5%9B%BD%E6%9C%80%E6%96%B0%E7%9A%84%E5%8E%BF%E7%BA%A7%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE/"></a>
 </article>
     </main>

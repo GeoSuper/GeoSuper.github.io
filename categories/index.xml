@@ -8,6 +8,25 @@
       <url>https://geosuper.top/images/home.jpg</url>
       <link>https://geosuper.top/images/home.jpg</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://geosuper.top/categories/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 23 Nov 2021 08:50:34 +0800</lastBuildDate><atom:link href="https://geosuper.top/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python</title>
+      <link>https://geosuper.top/categories/python/</link>
+      <pubDate>Tue, 23 Nov 2021 08:50:34 +0800</pubDate>
+      
+      <guid>https://geosuper.top/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://geosuper.top/categories/r/</link>
+      <pubDate>Fri, 14 May 2021 08:50:34 +0800</pubDate>
+      
+      <guid>https://geosuper.top/categories/r/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

@@ -6,9 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>如何获取中国最新的县级行政区划矢量数据 | 浮游</title>
-<meta name="keywords" content="R" />
+<meta name="keywords" content="矢量" />
 <meta name="description" content="数据来源：高德开放平台 1. 目标： （1）获取中国最新的县级行政区划矢量数据 （2）学习如何使用R语言将.json数据转为shp文件 2. 步骤： 将json数据处理为shapefile library(pacman) p_load(sf,tmap,maptools,rgdal) china&lt;-st_read(&#34;https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json&#34;) class(china) # [1] &#34;sp&#34; china qtm() qtm(china, fill = &#34;name&#34;)&#43; tm_text(&#34;name&#34;) crs(china) # CRS arguments: &#43;proj=longlat &#43;datum=WGS84 &#43;no_defs  china$name # [1] &#34;北京市&#34; &#34;天津市&#34; &#34;河北省&#34; &#34;山西省&#34; &#34;内蒙古自治区&#34;  # [6] &#34;辽宁省&#34; &#34;吉林省&#34; &#34;黑龙江省&#34; &#34;上海市&#34; &#34;江苏省&#34;  # [11] &#34;浙江省&#34; &#34;安徽省&#34; &#34;福建省&#34; &#34;江西省&#34; &#34;山东省&#34;  # [16] &#34;河南省&#34; &#34;湖北省&#34; &#34;湖南省&#34; &#34;广东省&#34; &#34;广西壮族自治区&#34;  # [21] &#34;海南省&#34; &#34;重庆市&#34; &#34;四川省&#34; &#34;贵州省&#34; &#34;云南省&#34;  # [26] &#34;西藏自治区&#34; &#34;陕西省&#34; &#34;甘肃省&#34; &#34;青海省&#34; &#34;宁夏回族自治区&#34;  # [31] &#34;新疆维吾尔自治区&#34; &#34;台湾省&#34; &#34;香港特别行政区&#34; &#34;澳门特别行政区&#34; &#34;&#34; 导出为shapefile">
-<meta name="author" content="Rambo">
+<meta name="author" content="浮游">
 <link rel="canonical" href="https://geosuper.top/posts/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E4%B8%AD%E5%9B%BD%E6%9C%80%E6%96%B0%E7%9A%84%E5%8E%BF%E7%BA%A7%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css" integrity="sha256-yIlj/i15RiAA/Q&#43;xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
@@ -99,7 +99,7 @@
   "name": "如何获取中国最新的县级行政区划矢量数据",
   "description": "数据来源：高德开放平台 1. 目标： （1）获取中国最新的县级行政区划矢量数据 （2）学习如何使用R语言将.json数据转为shp文件 2. 步骤： 将json数据处理为shapefile library(pacman) p_load(sf,tmap,maptools,rgdal) china\u0026lt;-st_read(\u0026#34;https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json\u0026#34;) class(china) # [1] \u0026#34;sp\u0026#34; china qtm() qtm(china, fill = \u0026#34;name\u0026#34;)+ tm_text(\u0026#34;name\u0026#34;) crs(china) # CRS arguments: +proj=longlat +datum=WGS84 +no_defs  china$name # [1] \u0026#34;北京市\u0026#34; \u0026#34;天津市\u0026#34; \u0026#34;河北省\u0026#34; \u0026#34;山西省\u0026#34; \u0026#34;内蒙古自治区\u0026#34;  # [6] \u0026#34;辽宁省\u0026#34; \u0026#34;吉林省\u0026#34; \u0026#34;黑龙江省\u0026#34; \u0026#34;上海市\u0026#34; \u0026#34;江苏省\u0026#34;  # [11] \u0026#34;浙江省\u0026#34; \u0026#34;安徽省\u0026#34; \u0026#34;福建省\u0026#34; \u0026#34;江西省\u0026#34; \u0026#34;山东省\u0026#34;  # [16] \u0026#34;河南省\u0026#34; \u0026#34;湖北省\u0026#34; \u0026#34;湖南省\u0026#34; \u0026#34;广东省\u0026#34; \u0026#34;广西壮族自治区\u0026#34;  # [21] \u0026#34;海南省\u0026#34; \u0026#34;重庆市\u0026#34; \u0026#34;四川省\u0026#34; \u0026#34;贵州省\u0026#34; \u0026#34;云南省\u0026#34;  # [26] \u0026#34;西藏自治区\u0026#34; \u0026#34;陕西省\u0026#34; \u0026#34;甘肃省\u0026#34; \u0026#34;青海省\u0026#34; \u0026#34;宁夏回族自治区\u0026#34;  # [31] \u0026#34;新疆维吾尔自治区\u0026#34; \u0026#34;台湾省\u0026#34; \u0026#34;香港特别行政区\u0026#34; \u0026#34;澳门特别行政区\u0026#34; \u0026#34;\u0026#34; 导出为shapefile",
   "keywords": [
-    "R"
+    "矢量"
   ],
   "articleBody": "数据来源：高德开放平台 1. 目标： （1）获取中国最新的县级行政区划矢量数据 （2）学习如何使用R语言将.json数据转为shp文件 2. 步骤： 将json数据处理为shapefile library(pacman) p_load(sf,tmap,maptools,rgdal) chinast_read(\"https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json\") class(china) # [1] \"sp\" china qtm() qtm(china, fill = \"name\")+ tm_text(\"name\") crs(china) # CRS arguments: +proj=longlat +datum=WGS84 +no_defs  china$name # [1] \"北京市\" \"天津市\" \"河北省\" \"山西省\" \"内蒙古自治区\"  # [6] \"辽宁省\" \"吉林省\" \"黑龙江省\" \"上海市\" \"江苏省\"  # [11] \"浙江省\" \"安徽省\" \"福建省\" \"江西省\" \"山东省\"  # [16] \"河南省\" \"湖北省\" \"湖南省\" \"广东省\" \"广西壮族自治区\"  # [21] \"海南省\" \"重庆市\" \"四川省\" \"贵州省\" \"云南省\"  # [26] \"西藏自治区\" \"陕西省\" \"甘肃省\" \"青海省\" \"宁夏回族自治区\"  # [31] \"新疆维吾尔自治区\" \"台湾省\" \"香港特别行政区\" \"澳门特别行政区\" \"\" 导出为shapefile\nst_write(china, \"G:/Rdata/China/GeoAltas/China.shp\", layer_options = \"ENCODING=UTF-8\",delete_layer = TRUE) **province  paste0(\"https://geo.datav.aliyun.com/areas_v2/bound/\",china$adcode,\"_full.json\") province1  province[1:34] province1 count=0 for (i in province1){ x  st_read(i) count  count + 1 st_write(x,dsn = \"G:/Rdata/China/GeoAltas/1\",layer = china$name[count], layer_options = \"ENCODING=UTF-8\",delete_layer = TRUE, driver = \"ESRI Shapefile\") } county  list.files(\"G:/Rdata/China/GeoAltas/1/省市\", full.names = TRUE, pattern = \".shp$\") library(plyr) data  NULL for(aFile in county){ data  rbind.fill(data, st_read(aFile)) } data  st_as_sf(data) class(data) # [1] \"sf\" \"data.frame\" qtm(data,fill = \"name\") data #https://stackoverflow.com/questions/64569432/st-union-sf-polygons-with-data-table data=data[1:nrow(data),] st_write(data,\"G:/Rdata/China/GeoAltas/city.shp\", layer_options = \"ENCODING=UTF-8\",delete_layer = TRUE) library(\"dplyr\") data  data%% dplyr::filter(chldrnN 0 ) qtm(data) city_county  paste0(\"https://geo.datav.aliyun.com/areas_v2/bound/\",data$adcode,\"_full.json\") head(city_county) # [1] \"https://geo.datav.aliyun.com/areas_v2/bound/340100_full.json\" # [2] \"https://geo.datav.aliyun.com/areas_v2/bound/340200_full.json\" # [3] \"https://geo.datav.aliyun.com/areas_v2/bound/340300_full.json\" # [4] \"https://geo.datav.aliyun.com/areas_v2/bound/340400_full.json\" # [5] \"https://geo.datav.aliyun.com/areas_v2/bound/340500_full.json\" # [6] \"https://geo.datav.aliyun.com/areas_v2/bound/340600_full.json\" count1 = 0 for(i in city_county){ x  st_read(i) count1  count1 + 1 st_write(x,dsn = \"G:/Rdata/China/GeoAltas/1/市县\",layer = data$name[count1], layer_options = \"ENCODING=UTF-8\", delete_layer = TRUE,driver = \"ESRI Shapefile\") }** 3. 结果 数据分享 https://pan.baidu.com/s/1yhLJodusCwx9GTK858Uxuw 提取码：1111\n欢迎关注个人公众号GeoSuper ",
   "wordCount" : "228",
@@ -108,7 +108,7 @@
   "dateModified": "2021-05-14T08:50:34+08:00",
   "author":{
     "@type": "Person",
-    "name": "Rambo"
+    "name": "浮游"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
@@ -197,7 +197,7 @@
     <h1 class="post-title">
       如何获取中国最新的县级行政区划矢量数据
     </h1>
-    <div class="post-meta"><span title='2021-05-14 08:50:34 +0800 CST'>2021-05-14</span>&nbsp;·&nbsp;Rambo
+    <div class="post-meta"><span title='2021-05-14 08:50:34 +0800 CST'>2021-05-14</span>&nbsp;·&nbsp;浮游
 
 </div>
   </header> <div class="toc">
@@ -336,7 +336,7 @@ count1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://geosuper.top/tags/r/">R</a></li>
+      <li><a href="https://geosuper.top/tags/%E7%9F%A2%E9%87%8F/">矢量</a></li>
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://geosuper.top/posts/%E9%81%A5%E6%84%9F%E5%BD%B1%E5%83%8F%E9%A2%84%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E9%85%8D%E5%87%86/">
