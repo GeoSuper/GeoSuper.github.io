@@ -28,6 +28,10 @@
   </url><url>
     <loc>https://geosuper.top/categories/</loc>
   </url><url>
-    <loc>https://geosuper.top/archive/</loc>
+    <loc>https://geosuper.top/archives/</loc>
+  </url><url>
+    <loc>https://geosuper.top/search/</loc>
+  </url><url>
+    <loc>https://geosuper.top/tags/</loc>
   </url>
 </urlset>
